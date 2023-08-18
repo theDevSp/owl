@@ -49,6 +49,11 @@ class ResPartnerFormController extends FormController {
             });*/
         });
     }
+    reset(){
+        const targetElement = document.querySelector('iframe');
+
+        targetElement.remove()
+    }
 }
 
 
