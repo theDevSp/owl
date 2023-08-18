@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="owl.ResPartnerFormView" t-inherit="web.FormView" owl="1">
+        <xpath expr="//button[hasclass('o_form_button_create')]" position="after">
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Action
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    t-on-click="()=>this.openWebsite(model.root.data.website)">Go to Website</button>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider"/>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="iframeContainer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>
