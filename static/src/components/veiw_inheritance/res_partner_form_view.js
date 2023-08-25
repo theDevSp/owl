@@ -16,7 +16,7 @@ class ResPartnerFormController extends FormController {
         this.action = useService("action")
         
     }
-
+    
     openWebsite(url) {
         
         html2canvas(document.querySelector(".o_form_sheet")).then(function (canvas) {
@@ -28,31 +28,19 @@ class ResPartnerFormController extends FormController {
 
                 // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
                 header: portrait_header(),
-                footer: {
-                    columns: [
-                        { qr: 'http://pdfmake.org/playground.html', fit: 70 },
-                    ]
-                },
-                pageMargins: [40, 40, 40, 100]
+                footer: function(currentPage, pageCount) { return currentPage.toString() + ' of ' + pageCount; },
+                pageMargins: [40, 40, 40, 40],
+                
             };
             const pdfDocGenerator = pdfMake.createPdf(docDefinition);
             pdfDocGenerator.getDataUrl().then((dataUrl) =>{
                 const targetElement = document.querySelector('#iframeContainer');
-                const iframe = document.createElement('iframe');
-                iframe.src = dataUrl;
-                iframe.width = "100%"
-                iframe.height = "700"
-                targetElement.appendChild(iframe);
+                targetElement.src = dataUrl;
             })
             /*pdfDocGenerator.getDataUrl((dataUrl) => {
                 
             });*/
         });
-    }
-    reset(){
-        const targetElement = document.querySelector('iframe');
-
-        targetElement.remove()
     }
 }
 
